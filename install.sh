@@ -26,7 +26,7 @@ case "$resposta" in
         curl -sSL 'https://github.com/rafaelspaesleme-ads/jenkins-client/raw/master/docker/scripts-sh/docker.sh' | bash
     ;;
     2)
-        docker build ./docker -t jenkins_docker
+        docker build -t jenkins_docker ./docker
     ;;
     3)
         curl -sSL 'https://github.com/rafaelspaesleme-ads/jenkins-client/raw/master/src/scripts-sh/jenkins.sh' | bash
