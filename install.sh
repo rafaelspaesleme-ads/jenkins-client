@@ -26,7 +26,12 @@ case "$resposta" in
         curl -sSL 'https://github.com/rafaelspaesleme-ads/jenkins-client/raw/master/docker/scripts-sh/docker.sh' | bash
     ;;
     2)
-        docker build -t jenkins_docker ./docker
+        docker build -t 'jenkins_docker' ./docker
+        docker run 'jenkins_docker'
+        IP_DOCKER_BUGADO=$(docker inspect ic_server | grep '"IPAddress"' | head -n 1)
+        IP_DOCKER_BUG="$(echo $IP_DOCKER_BUGADO | cut -d':' -f2)"
+        IP_DOCKER="$(echo $IP_DOCKER_BUG | cut -d',' -f1)"
+        google-chrome http://$IP_DOCKER:8080
     ;;
     3)
         curl -sSL 'https://github.com/rafaelspaesleme-ads/jenkins-client/raw/master/src/scripts-sh/jenkins.sh' | bash
